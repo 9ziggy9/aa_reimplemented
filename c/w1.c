@@ -38,6 +38,15 @@ void full_name(char* name) {
     strcat(name, "Rogers");
 }
 
+// Strings Exercise
+// Show concatenation and find string length
+// I previously showed concatenation, lets implement a string length function
+int string_length(char *string) {
+    int length = 0;
+    while (*string++ != '\0') length++;
+    return length;
+}
+
 int main(int argc, char **argv) {
     printf("%s\n", fav_food());
     some_operations();
@@ -46,5 +55,8 @@ int main(int argc, char **argv) {
     char final_name[100];
     full_name(final_name);
     printf("%s\n", final_name);
+
+    // We'll take this from command line, remember argv[1] is string
+    printf("%d\n", string_length(argv[1]));
     return 0;
 }
