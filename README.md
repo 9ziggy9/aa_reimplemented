@@ -1,4 +1,5 @@
-#aA coding curriculum implemented in C and Haskell
+aA coding curriculum implemented in C and Haskell
+
 The purpose of this repo is to compare and contrast functional vs procedural paradigm
 
 C is used in the most imperative way possible,
