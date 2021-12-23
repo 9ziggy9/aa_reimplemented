@@ -1,3 +1,5 @@
+import System.Posix (SystemID(version))
+import Data.Char (toLower)
 -- Favorite Food
 -- Print out your favorite food
 favFood = putStrLn "Crab Legs"
@@ -17,7 +19,7 @@ someOperations = do
 boolsExample = do
   print $ True == True
   print $ True == False
-  print $ True
+  print True
   print $ True && False
   print $ True || False
   print $ True && True
@@ -53,3 +55,10 @@ goodbye s = "Goodbye, " ++ s
 -- and returns the sum + 5.
 plusFive :: Int -> Int
 plusFive x = x + 5
+
+
+-- Whisper
+-- Write a function that takes a string and returns whispered version
+-- We map toLower over string
+whisper :: String -> String
+whisper s = "..." ++ map toLower s ++ "..."

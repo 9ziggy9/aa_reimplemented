@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 // Favorite Food
 // Print out your favorite food
@@ -62,6 +63,19 @@ int plus_five(int num) {
     return num + 5;
 }
 
+// Whisper
+// Write a function that returns whispered version
+char* whisper(char *string) {
+    static char whisper[255] = "...";
+    char *ellipse = "...";
+    char *string_p = string;
+    while (*string != '\0') {
+        *string = tolower(*string);
+        string++;
+    }
+    return strcat(whisper, strcat(string_p, ellipse));
+}
+
 int main(int argc, char **argv) {
     printf("%s\n", fav_food());
     some_operations();
@@ -78,6 +92,7 @@ int main(int argc, char **argv) {
     printf("%s\n", goodbye(argv[1]));
 
     printf("%d\n", plus_five(atoi(argv[2])));
+    printf("%s\n", whisper(argv[1]));
 
     return 0;
 }
