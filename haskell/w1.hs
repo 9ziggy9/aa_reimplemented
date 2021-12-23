@@ -74,3 +74,13 @@ isOdd :: Int -> Bool
 isOdd n
   | odd n = True
   | otherwise = False
+
+-- Log Between
+-- Print every number between a low and high value
+logBetween :: Int -> Int -> [Int]
+logBetween a b = [a..b]
+
+-- Print Fives
+-- Function to print out multiple of fives in range
+printFives :: Int -> Int -> [Int]
+printFives a b = [x | x <- [a..b], x `mod` 5 == 0]
