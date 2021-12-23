@@ -108,6 +108,7 @@ void print_arr(int *arr, int length) {
     printf("}\n");
 }
 
+// Dynamic array implementation, not this only works for positive a and b, b > a
 int *new_array(int a, int b) {
     size_t length = abs(b - a);
     int *p_arr;
@@ -123,6 +124,30 @@ int *new_array(int a, int b) {
     }
     return p_arr_begin;
 }
+
+// Print Fives
+// Print multiples of five in a range
+// Simply generalize new_array()
+int *new_mult_array(int a, int b, int mult) {
+    size_t length = abs(b - a) / mult;
+    int *p_arr;
+    p_arr = (int*) malloc(length * sizeof(int));
+    int *p_arr_begin = p_arr;
+    if (p_arr == NULL) {
+        printf("\nERROR: Allocation of memory failed in new_array().\n");
+        exit(-1);
+    }
+    for (int i = a; i <= b; i++) {
+        if (a % mult == 0) {
+            printf("\nHERE: %d\n", a);
+            *p_arr = a;
+            p_arr++;
+        }
+        a++;
+    }
+    return p_arr_begin;
+}
+
 
 int main(int argc, char **argv) {
     int start_num = atoi(argv[2]);
@@ -148,8 +173,14 @@ int main(int argc, char **argv) {
 
     printf("Is odd: %s\n", is_odd(start_num) == 1 ? "true" : "false");
 
-    int *test_arr = new_array(4,20);
-    print_arr(test_arr, 16);
+    int start = 1;
+    int end = 21;
+    int *test_arr = new_array(start,end);
+    int *test_mult_arr = new_mult_array(start,end, 5);
+    print_arr(test_arr, end-start);
+    print_arr(test_mult_arr, (end-start)/5);
+    free(test_arr);
+    free(test_mult_arr);
 
     return 0;
 }
