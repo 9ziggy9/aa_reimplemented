@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 
 // Favorite Food
 // Print out your favorite food
@@ -47,16 +48,36 @@ int string_length(char *string) {
     return length;
 }
 
+// Goodbye (*)
+// say goodbye to given string
+char *goodbye(char *name) {
+    static char goodbye[100] = "Goodbye, ";
+    strcat(goodbye, name);
+    return goodbye;
+}
+
+// Plus Five
+// Write a function that adds 5
+int plus_five(int num) {
+    return num + 5;
+}
+
 int main(int argc, char **argv) {
     printf("%s\n", fav_food());
     some_operations();
     bools_example();
 
+    // First fix for referencing memory in stack, can also use static
+    // inside of function call, look at goodbye();
     char final_name[100];
     full_name(final_name);
     printf("%s\n", final_name);
 
     // We'll take this from command line, remember argv[1] is string
     printf("%d\n", string_length(argv[1]));
+    printf("%s\n", goodbye(argv[1]));
+
+    printf("%d\n", plus_five(atoi(argv[2])));
+
     return 0;
 }
