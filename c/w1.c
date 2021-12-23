@@ -112,7 +112,16 @@ int *new_array(int a, int b) {
     size_t length = abs(b - a);
     int *p_arr;
     p_arr = (int*) malloc(length * sizeof(int));
-    assert(p_arr == NULL);
+    int *p_arr_begin = p_arr;
+    if (p_arr == NULL) {
+        printf("\nERROR: Allocation of memory failed in new_array().\n");
+        exit(-1);
+    }
+    for (size_t i = 0; i < length; i++) {
+        *p_arr = a++;
+        p_arr++;
+    }
+    return p_arr_begin;
 }
 
 int main(int argc, char **argv) {
@@ -139,8 +148,8 @@ int main(int argc, char **argv) {
 
     printf("Is odd: %s\n", is_odd(start_num) == 1 ? "true" : "false");
 
-    int int_set[5] = {1,2,3,4,5};
-    print_arr(int_set, 5);
+    int *test_arr = new_array(4,20);
+    print_arr(test_arr, 16);
 
     return 0;
 }
