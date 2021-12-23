@@ -85,7 +85,15 @@ float average(float *nums, int total) {
     return acc / total;
 }
 
+// Is Odd
+// Determine if number is odd
+int is_odd(int n) {
+    if (n <= 0) return 0;
+    return n % 2 == 0 ? 0 : 1;
+}
+
 int main(int argc, char **argv) {
+    int start_num = atoi(argv[2]);
     printf("%s\n", fav_food());
     some_operations();
     bools_example();
@@ -106,5 +114,6 @@ int main(int argc, char **argv) {
     float number_set[5] = {1,2,3,4,5};
     printf("Average is: %.2f\n", average(number_set, 5));
 
+    printf("Is odd: %s\n", is_odd(start_num) == 1 ? "true" : "false");
     return 0;
 }

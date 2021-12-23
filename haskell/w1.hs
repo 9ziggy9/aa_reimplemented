@@ -62,3 +62,15 @@ plusFive x = x + 5
 -- We map toLower over string
 whisper :: String -> String
 whisper s = "..." ++ map toLower s ++ "..."
+
+-- Averager
+-- Function which returns average of list of nums
+averager :: [Float] -> Float
+averager xs = sum xs / fromIntegral (length xs);
+
+-- Is Odd
+-- Function determines if number is odd or not
+isOdd :: Int -> Bool
+isOdd n
+  | odd n = True
+  | otherwise = False
