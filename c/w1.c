@@ -76,6 +76,15 @@ char* whisper(char *string) {
     return strcat(whisper, strcat(string_p, ellipse));
 }
 
+// Averager
+// Function which returns average of numbers
+float average(float *nums, int total) {
+    int count = total;
+    float acc = 0;
+    while (count-- >= 0) acc += nums[count];
+    return acc / total;
+}
+
 int main(int argc, char **argv) {
     printf("%s\n", fav_food());
     some_operations();
@@ -93,6 +102,9 @@ int main(int argc, char **argv) {
 
     printf("%d\n", plus_five(atoi(argv[2])));
     printf("%s\n", whisper(argv[1]));
+
+    float number_set[5] = {1,2,3,4,5};
+    printf("Average is: %.2f\n", average(number_set, 5));
 
     return 0;
 }
