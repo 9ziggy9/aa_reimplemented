@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <assert.h>
 
 // Favorite Food
 // Print out your favorite food
@@ -92,6 +93,28 @@ int is_odd(int n) {
     return n % 2 == 0 ? 0 : 1;
 }
 
+// Log Between
+// Print every numbers between a low and high value
+// NOTE: First we need to implement a clean way to display arrays
+void print_arr(int *arr, int length) {
+    printf("{");
+    for (int i = 0; i < length; i++) {
+        if (i == length - 1) {
+            printf("%d", arr[i]);
+            break;
+        }
+        printf("%d, ", arr[i]);
+    }
+    printf("}\n");
+}
+
+int *new_array(int a, int b) {
+    size_t length = abs(b - a);
+    int *p_arr;
+    p_arr = (int*) malloc(length * sizeof(int));
+    assert(p_arr == NULL);
+}
+
 int main(int argc, char **argv) {
     int start_num = atoi(argv[2]);
     printf("%s\n", fav_food());
@@ -115,5 +138,9 @@ int main(int argc, char **argv) {
     printf("Average is: %.2f\n", average(number_set, 5));
 
     printf("Is odd: %s\n", is_odd(start_num) == 1 ? "true" : "false");
+
+    int int_set[5] = {1,2,3,4,5};
+    print_arr(int_set, 5);
+
     return 0;
 }
