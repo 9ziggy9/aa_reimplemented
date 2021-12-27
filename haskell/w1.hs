@@ -84,3 +84,19 @@ logBetween a b = [a..b]
 -- Function to print out multiple of fives in range
 printFives :: Int -> Int -> [Int]
 printFives a b = [x | x <- [a..b], x `mod` 5 == 0]
+
+-- Add Arrays
+-- Write function that returns two combined arrays
+combineArrays :: [Int] -> [Int] -> [Int]
+combineArrays as bs = as ++ bs
+
+-- Doubler
+doubleList :: [Int] -> [Int]
+doubleList xs = [2*x | x <- xs]
+
+-- Vowel Counter
+isVowel :: Char -> Bool
+isVowel c = c `elem` "aeiou"
+
+vowelCounter :: String -> Int
+vowelCounter s = length $ filter isVowel s

@@ -139,7 +139,6 @@ int *new_mult_array(int a, int b, int mult) {
     }
     for (int i = a; i <= b; i++) {
         if (a % mult == 0) {
-            printf("\nHERE: %d\n", a);
             *p_arr = a;
             p_arr++;
         }
@@ -148,6 +147,33 @@ int *new_mult_array(int a, int b, int mult) {
     return p_arr_begin;
 }
 
+// Add Array
+// Write a function which takes two arrays and returns the two combined into one.
+int* combined_array(int* arr1, int* arr2, size_t length1, size_t length2) {
+    int* combined_array = (int*) malloc(sizeof(int)*(length1+length2));
+    for (size_t i = 0; i < length1; i++)
+        combined_array[i] = arr1[i];
+    for (size_t i = 0; i < length2; i++)
+        combined_array[length1+i] = arr2[i];
+    return combined_array;
+}
+
+bool is_vowel(char c)  {
+    switch (c) {
+        case 'a': return true;
+        case 'e': return true;
+        case 'i': return true;
+        case 'o': return true;
+        case 'u': return true;
+    }
+    return false;
+}
+
+int vowel_counter(char* string) {
+    int count = 0;
+    while (*string++ != '\0') if (is_vowel(tolower(*string))) count++;
+    return count;
+}
 
 int main(int argc, char **argv) {
     int start_num = atoi(argv[2]);
@@ -181,6 +207,15 @@ int main(int argc, char **argv) {
     print_arr(test_mult_arr, (end-start)/5);
     free(test_arr);
     free(test_mult_arr);
+
+    int aT1[3] = {1,2,3};
+    int aT2[4] = {4,5,6,7};
+    int* new_arr = combined_array(aT1,aT2,3,4);
+    print_arr(new_arr,7);
+    free(new_arr);
+
+    int vowel_count = vowel_counter(argv[1]);
+    printf("VOWEL COUNT: %d\n", vowel_count);
 
     return 0;
 }
