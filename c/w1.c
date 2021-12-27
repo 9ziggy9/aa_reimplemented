@@ -161,13 +161,13 @@ int* combined_array(int* arr1, int* arr2, size_t length1, size_t length2) {
 // Vowel Counter
 bool is_vowel(char c)  {
     switch (c) {
-        case 'a': return true;
-        case 'e': return true;
-        case 'i': return true;
-        case 'o': return true;
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
         case 'u': return true;
+        default: return false;
     }
-    return false;
 }
 
 int vowel_counter(char* string) {
@@ -183,6 +183,22 @@ bool is_substring(char *sub, char *string) {
         return true;
     else
         return false;
+}
+
+char** fizz_buzz(size_t max) {
+    // Max string length is of "Fizz Buzz" -- 10 chars
+    char** fizz_arr = malloc(max * sizeof(char*));
+    for (size_t i = 0; i < max; i++)
+        fizz_arr[i] = (char*) malloc(10 * sizeof(char));
+
+    for (int i = 1; i < (int) max; i++) {
+        if (!(i%3) && !(i%5)) strcpy(fizz_arr[i], "Fizz Buzz");
+        else if (!(i%3)) strcpy(fizz_arr[i], "Fizz");
+        else if (!(i%5)) strcpy(fizz_arr[i], "Buzz");
+        else sprintf(fizz_arr[i], "%d", i);
+        printf("%s\n", fizz_arr[i]);
+    }
+    return fizz_arr;
 }
 
 int main(int argc, char **argv) {
@@ -232,6 +248,9 @@ int main(int argc, char **argv) {
 
     printf("Is \"%s\" a substring of \"%s\"? %s\n", "Cat", "Cat ate a thing",
            is_substring("Cat", "Cat ate a thing") ? "yes" : "no");
+
+    char** fizz_test = fizz_buzz(16);
+    free(fizz_test);
 
     return 0;
 }

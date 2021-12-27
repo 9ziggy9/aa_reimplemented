@@ -114,3 +114,17 @@ promptCountVowels = do
 -- Check if given string is substring of other
 isSubstring :: String -> String -> Bool
 isSubstring = isInfixOf
+
+-- Fizz Buzz
+fizzBuzzOut :: Int -> String
+fizzBuzzOut k
+  | k `mod` 5 == 0 && k `mod` 3 == 0 = "Fizz Buzz"
+  | k `mod` 3 == 0 = "Fizz"
+  | k `mod` 5 == 0 = "Buzz"
+  | otherwise = show k
+
+fizzBuzz :: Int -> [String]
+fizzBuzz max = map fizzBuzzOut [1..max]
+
+-- Pig Latin
+-- Takes a string and out puts it in pig latin
