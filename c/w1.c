@@ -158,6 +158,7 @@ int* combined_array(int* arr1, int* arr2, size_t length1, size_t length2) {
     return combined_array;
 }
 
+// Vowel Counter
 bool is_vowel(char c)  {
     switch (c) {
         case 'a': return true;
@@ -173,6 +174,15 @@ int vowel_counter(char* string) {
     int count = 0;
     while (*string++ != '\0') if (is_vowel(tolower(*string))) count++;
     return count;
+}
+
+bool is_substring(char *sub, char *string) {
+    char* ret;
+    ret = strstr(string, sub);
+    if (ret)
+        return true;
+    else
+        return false;
 }
 
 int main(int argc, char **argv) {
@@ -216,6 +226,12 @@ int main(int argc, char **argv) {
 
     int vowel_count = vowel_counter(argv[1]);
     printf("VOWEL COUNT: %d\n", vowel_count);
+
+    printf("Is \"%s\" a substring of \"%s\"? %s\n", "Dog", "Cat ate a thing",
+           is_substring("Dog", "Cat ate a thing") ? "yes" : "no");
+
+    printf("Is \"%s\" a substring of \"%s\"? %s\n", "Cat", "Cat ate a thing",
+           is_substring("Cat", "Cat ate a thing") ? "yes" : "no");
 
     return 0;
 }

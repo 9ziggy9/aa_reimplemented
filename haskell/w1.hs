@@ -1,5 +1,7 @@
 import System.Posix (SystemID(version))
 import Data.Char (toLower)
+import Data.List (isInfixOf)
+
 -- Favorite Food
 -- Print out your favorite food
 favFood = putStrLn "Crab Legs"
@@ -100,3 +102,15 @@ isVowel c = c `elem` "aeiou"
 
 vowelCounter :: String -> Int
 vowelCounter s = length $ filter isVowel s
+
+-- Testing IO monad
+promptCountVowels :: IO ()
+promptCountVowels = do
+  putStrLn "Enter a string to count vowels: "
+  s <- getLine
+  print (vowelCounter s)
+
+-- Is Substring
+-- Check if given string is substring of other
+isSubstring :: String -> String -> Bool
+isSubstring = isInfixOf
