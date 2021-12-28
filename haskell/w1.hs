@@ -166,5 +166,16 @@ isPrime n
   | otherwise = False
 
 -- reverseString
+_reverseString :: String -> String
+_reverseString = reverse
+
+-- Reverse String, actual implementation
 reverseString :: String -> String
-reverseString = reverse
+reverseString (c:cs)
+  | null cs = [c]
+  | otherwise = reverseString cs ++ [c]
+
+
+-- Range write a function that returns a range. lel
+returnRange :: Int -> Int -> [Int]
+returnRange a b = [a..b]

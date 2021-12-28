@@ -260,6 +260,29 @@ void reverse_string(char *string) {
     printf("%s\n", string);
 }
 
+int *range(int a, int b) {
+    size_t size = b - a + 1;
+
+    if (size <= 0) {
+        fprintf(stderr, "Improper limits on range\n");
+        return NULL;
+    }
+
+    int *range_arr;
+    range_arr = (int*) malloc(size * sizeof(int));
+
+    if (range_arr == NULL) {
+        fprintf(stderr, "\nFailed to allocate memory.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (size_t i = 0; i < size; i++) {
+        range_arr[i] = a++;
+    }
+
+    return range_arr;
+}
+
 int main(int argc, char **argv) {
     (void) argc; // Shut compiler up
 
@@ -338,6 +361,9 @@ int main(int argc, char **argv) {
     char rev_string[] = "hello world";
     reverse_string(rev_string);
     printf("Reversed string: %s\n", rev_string);
+
+    int *range_arr = range(1,10);
+    print_arr(range_arr, 10);
 
     return 0;
 }
