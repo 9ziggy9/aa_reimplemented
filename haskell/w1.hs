@@ -164,3 +164,7 @@ isPrime n
   | n == 1 = True
   | sum [m | m <- [2..(n-1)], n `mod` m == 0] == 0 = True
   | otherwise = False
+
+-- reverseString
+reverseString :: String -> String
+reverseString = reverse

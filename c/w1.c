@@ -236,9 +236,9 @@ char* pig_word(char *string) {
     return pig_string;
 }
 
-void pig_latin(char **string, int len) {
-    //NOTE: look into strtok
-}
+/* void pig_latin(char **string, int len) { */
+/*     //NOTE: look into strtok */
+/* } */
 
 bool is_prime(int n) {
     for (int i = 2; i < n; i++) {
@@ -247,7 +247,22 @@ bool is_prime(int n) {
     return true;
 }
 
+void reverse_string(char *string) {
+    char tmp;
+    int len = strlen(string);
+    printf("%s\n", string);
+    for (int i = 0; i < len/2 ; i++) {
+        tmp = string[i];
+        printf("tmp: %c\n", tmp);
+        string[i] = string[len - i - 1];
+        string[len - i - 1] = tmp;
+    }
+    printf("%s\n", string);
+}
+
 int main(int argc, char **argv) {
+    (void) argc; // Shut compiler up
+
     int start_num = atoi(argv[2]);
     printf("%s\n", fav_food());
     some_operations();
@@ -305,6 +320,24 @@ int main(int argc, char **argv) {
 
     int test_prime = is_prime(6);
     printf("Is Prime? %s\n", test_prime ? "true" : "false");
+
+    // For some reason this is verboten?
+    // char *rev_string = "hello world";
+    // K&R --
+    // There is an important difference between these defintions:
+    // char amessage[] = "now is the time"; THIS IS AN ARRAY
+    // char *pmessage = "now is the time"; THIS IS A POINTER
+    //
+    // amessage is an array, just big enough to hold the sequence of characters
+    // and '\0' that initializes it. Individual characters within the array may
+    // be changed but amessage will always refer to the same storage. On the other
+    // hand, pmessage is a pointer, initialized to point to a string constant; the
+    // pointer may subsequently be modified to point elsewhere, but the result is
+    // undefined if you try to modify the string contents.
+
+    char rev_string[] = "hello world";
+    reverse_string(rev_string);
+    printf("Reversed string: %s\n", rev_string);
 
     return 0;
 }
