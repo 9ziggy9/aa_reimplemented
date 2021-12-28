@@ -240,6 +240,13 @@ void pig_latin(char **string, int len) {
     //NOTE: look into strtok
 }
 
+bool is_prime(int n) {
+    for (int i = 2; i < n; i++) {
+        if (!(n % i)) return false;
+    }
+    return true;
+}
+
 int main(int argc, char **argv) {
     int start_num = atoi(argv[2]);
     printf("%s\n", fav_food());
@@ -295,6 +302,9 @@ int main(int argc, char **argv) {
     char* piggy = pig_word(old_string);
     printf("\nPIGGY STRING: %s\n", piggy);
     free(piggy);
+
+    int test_prime = is_prime(6);
+    printf("Is Prime? %s\n", test_prime ? "true" : "false");
 
     return 0;
 }

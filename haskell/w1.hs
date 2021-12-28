@@ -156,3 +156,11 @@ word2PigAlt w
 
 toPigAlt :: String -> String
 toPigAlt = unwords . map word2PigAlt . words
+
+-- Is Prime
+isPrime :: Int -> Bool
+isPrime n
+  | n < 1 = False
+  | n == 1 = True
+  | sum [m | m <- [2..(n-1)], n `mod` m == 0] == 0 = True
+  | otherwise = False
