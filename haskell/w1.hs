@@ -134,15 +134,13 @@ startsVowel (c:_)
   | c `elem` "aeiou" = True
   | otherwise = False
 
-cWord2Pig :: String -> String
-cWord2Pig (c:cs)
-  | not $ startsVowel (c:cs) = cWord2Pig (cs ++ [c])
-  | otherwise = (c:cs) ++ "ay"
-
 word2Pig :: String -> String
 word2Pig w
   | startsVowel w = w ++ "yay"
-  | otherwise = cWord2Pig w
+  | otherwise = go w where
+      go (c:cs)
+        | not $ startsVowel (c:cs) = go (cs ++ [c])
+        | otherwise = (c:cs) ++ "ay"
 
 toPig :: String -> String
 toPig = unwords . map word2Pig . words
