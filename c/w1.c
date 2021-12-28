@@ -237,11 +237,7 @@ char* pig_word(char *string) {
 }
 
 void pig_latin(char **string, int len) {
-    printf("\n");
-    for (int i = 0; i < len; i++) {
-        printf("%s ", pig_word(string[i]));
-    }
-    printf("\n");
+    //NOTE: look into strtok
 }
 
 int main(int argc, char **argv) {
