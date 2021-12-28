@@ -1,6 +1,6 @@
 import System.Posix (SystemID(version))
 import Data.Char (toLower)
-import Data.List (isInfixOf)
+import Data.List (isInfixOf, isPrefixOf, isSuffixOf)
 
 -- Favorite Food
 -- Print out your favorite food
@@ -128,3 +128,22 @@ fizzBuzz max = map fizzBuzzOut [1..max]
 
 -- Pig Latin
 -- Takes a string and out puts it in pig latin
+startsVowel :: String -> Bool
+startsVowel w
+  | toLower (head w) `elem` "aeiou" = True
+  | otherwise = False
+
+cWord2Pig :: String -> String
+cWord2Pig [] = ""
+cWord2Pig w
+  | not $ startsVowel w = cWord2Pig (tail w ++ [head w])
+  | otherwise = w ++ "ay"
+
+word2Pig :: String -> String
+word2Pig [] = ""
+word2Pig w
+  | startsVowel w = w ++ "yay"
+  | otherwise = cWord2Pig w
+
+toPig :: String -> String
+toPig = unwords . map word2Pig . words
