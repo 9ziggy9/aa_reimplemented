@@ -128,19 +128,18 @@ fizzBuzz max = map fizzBuzzOut [1..max]
 
 -- Pig Latin
 -- Takes a string and out puts it in pig latin
+-- NOTE: Remember that using head/tail here would be UNSAFE
 startsVowel :: String -> Bool
-startsVowel w
-  | toLower (head w) `elem` "aeiou" = True
+startsVowel (c:_)
+  | c `elem` "aeiou" = True
   | otherwise = False
 
 cWord2Pig :: String -> String
-cWord2Pig [] = ""
-cWord2Pig w
-  | not $ startsVowel w = cWord2Pig (tail w ++ [head w])
-  | otherwise = w ++ "ay"
+cWord2Pig (c:cs)
+  | not $ startsVowel (c:cs) = cWord2Pig (cs ++ [c])
+  | otherwise = (c:cs) ++ "ay"
 
 word2Pig :: String -> String
-word2Pig [] = ""
 word2Pig w
   | startsVowel w = w ++ "yay"
   | otherwise = cWord2Pig w
