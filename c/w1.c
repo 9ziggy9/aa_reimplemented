@@ -208,7 +208,6 @@ char* pig_word(char *string) {
     char first = string[0];
     char cfirst;
     char* cons_buffer = malloc(10*sizeof(char));
-    int cons_length = 1;
 
     if(strstr("aeiou", &first)) {
         pig_string = malloc((length+4)*sizeof(char));
@@ -219,7 +218,6 @@ char* pig_word(char *string) {
         while (first != '\0') {
             if(strstr("aeiou", &first)) break;
             strcat(cons_buffer, &first);
-            cons_length++;
             first = string[++count];
         }
         while (first != '\0') {
@@ -234,7 +232,16 @@ char* pig_word(char *string) {
         }
         strcat(pig_string, "ay");
     }
+    free(cons_buffer);
     return pig_string;
+}
+
+void pig_latin(char **string, int len) {
+    printf("\n");
+    for (int i = 0; i < len; i++) {
+        printf("%s ", pig_word(string[i]));
+    }
+    printf("\n");
 }
 
 int main(int argc, char **argv) {
@@ -288,7 +295,7 @@ int main(int argc, char **argv) {
     char** fizz_test = fizz_buzz(16);
     free(fizz_test);
 
-    char* old_string = "hello";
+    char* old_string = "sham";
     char* piggy = pig_word(old_string);
     printf("\nPIGGY STRING: %s\n", piggy);
     free(piggy);
