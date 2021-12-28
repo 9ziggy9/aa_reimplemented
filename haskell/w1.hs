@@ -144,3 +144,14 @@ word2Pig w
 
 toPig :: String -> String
 toPig = unwords . map word2Pig . words
+
+-- Pig Latin (break/span)
+-- Implementation using break/span
+word2PigAlt :: String -> String
+word2PigAlt w
+  | startsVowel w = post ++ "yay"
+  | otherwise = post ++ pre ++ "ay" where
+      (pre,post) = break isVowel w
+
+toPigAlt :: String -> String
+toPigAlt = unwords . map word2PigAlt . words
