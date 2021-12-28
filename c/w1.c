@@ -201,6 +201,42 @@ char** fizz_buzz(size_t max) {
     return fizz_arr;
 }
 
+char* pig_word(char *string) {
+    size_t length = (size_t) string_length(string);
+    char* pig_string;
+    int count = 0;
+    char first = string[0];
+    char cfirst;
+    char* cons_buffer = malloc(10*sizeof(char));
+    int cons_length = 1;
+
+    if(strstr("aeiou", &first)) {
+        pig_string = malloc((length+4)*sizeof(char));
+        strcpy(pig_string, string);
+        strcat(pig_string, "yay");
+    } else {
+        pig_string = malloc((length+3)*sizeof(char));
+        while (first != '\0') {
+            if(strstr("aeiou", &first)) break;
+            strcat(cons_buffer, &first);
+            cons_length++;
+            first = string[++count];
+        }
+        while (first != '\0') {
+            strcat(pig_string, &first);
+            first = string[++count];
+        }
+        count = 0;
+        cfirst = cons_buffer[count];
+        while (cons_buffer[count] != '\0') {
+            strcat(pig_string, &cfirst);
+            cfirst = cons_buffer[++count];
+        }
+        strcat(pig_string, "ay");
+    }
+    return pig_string;
+}
+
 int main(int argc, char **argv) {
     int start_num = atoi(argv[2]);
     printf("%s\n", fav_food());
@@ -251,6 +287,11 @@ int main(int argc, char **argv) {
 
     char** fizz_test = fizz_buzz(16);
     free(fizz_test);
+
+    char* old_string = "hello";
+    char* piggy = pig_word(old_string);
+    printf("\nPIGGY STRING: %s\n", piggy);
+    free(piggy);
 
     return 0;
 }
