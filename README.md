@@ -4,3 +4,4 @@ The purpose of this repo is to compare and contrast functional vs procedural par
 
 C is used in the most imperative way possible,
 Haskell in the most declarative way possible.
+Yes.
